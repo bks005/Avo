@@ -12,12 +12,13 @@
   #cam{display:none;}
   #q{display:none;}
   #deb{display:none;}
-  #callin{display:none;}
+  #calin{display:none;}
   #me{display:none;}
   #a{display:none;}
   #mase{display:none;}
   #madi{display:none;}
   #ron{display:none; margin-left: 30%;}
+  #w{display:none;}
   .inst{text-align:center;}
   .hints{text-align:center; font-size:150%;}
   </style>
@@ -152,20 +153,23 @@ Event Handlers
     }
     if (hnum == 7)
     {
-      if ((passw != "Callin")&&(passw != ""))
+      if ((passw != "Calin")&&(passw != ""))
       {
         alert("Incorrect Password");
        document.getElementById("password").value = "";
       }
-     if (passw == "Callin")
+     if (passw == "Calin")
      {
        document.getElementById("inst").style.display = "none";
        document.getElementById("c").style.display = "none";
        document.getElementById("hint").style.display = "none";
        document.getElementById("pass").style.display = "none";
-      document.getElementById("callin").style.display = "none";
-      document.getElementById("password").value = "";
-      document.getElementById("c").innerHTML = "8/8";
+       document.getElementById("calin").style.display = "none";
+       document.getElementById("password").style.display = "none";
+       document.getElementById("ron").style.display = "block";
+       document.getElementById("password").value = "";
+       document.getElementById("w").style.display = "block";
+       document.getElementById("c").innerHTML = "8/8";
      }
 
     }
@@ -203,7 +207,7 @@ Event Handlers
     }
     if (hnum == 7)
     {
-    document.getElementById("callin").style.display = "block"
+    document.getElementById("calin").style.display = "block"
     }
 
   }
@@ -220,9 +224,15 @@ window.onload = function()
   <body style:background-Color:burlywood; id="body">
   <img src="Title.PNG" id="title" alt="image" width="80%" height="20%">
   <hr><br><br><br>
-  <img src="ron.PNG" id="ron" alt="image" width="40%" height="400px">
+  <img src="ron.PNG" id="ron" alt="image" width="40%" height="420px">
+  <div id="w" class="inst">
+    DO NOT SHOW THIS IMAGE TO ANYONE!
+  </div>
   <div id="inst" class="inst">
-    Please enter the correct series of passwords.
+    Please enter the correct series of passwords in order to gain
+    <div>
+    viewing access to a rare classified Avocado Pit photograph.
+  </div>
   </div><br>
   <div id="c"class="inst">
     0/8
@@ -240,7 +250,7 @@ window.onload = function()
   <div class="hints" id="deb">
     Band-aid
   </div>
-  <div class="hints" id="callin">
+  <div class="hints" id="calin">
     Whiny
   </div>
   <div class="hints" id="me">
@@ -253,7 +263,7 @@ window.onload = function()
     Oh, yeeeeah...
   </div>
   <div class="hints" id="madi">
-    Ribs in disorder
+    Costochondral separation
   </div>
 </body>
 </html>
