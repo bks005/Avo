@@ -7,8 +7,8 @@
   body{background-color:#aed75b; font-family:sans-serif;}
   hr{border-color:black;}
   #title{margin-left: 10%;}
-  #password{margin-left: 45%;}
-  #pass{margin-left: 46.6%;}
+  #password{}
+  #pass{}
   #cam{display:none;}
   #q{display:none;}
   #deb{display:none;}
@@ -237,10 +237,11 @@ window.onload = function()
   <div id="c"class="inst">
     0/8
   </div><br>
-  <input id="password" type="password" size="20" maxlength="30" v><br><br>
-  <button type="button" id="pass" class="inst">Enter</button>
-  <button type="button" id="hint" class="inst">Hint</button><br><br>
-
+  <div class="inst">
+  <input id="password" type="password" size="20" maxlength="30"><br><br>
+  <button type="button" id="pass">Enter</button>
+  <button type="button" id="hint">Hint</button><br><br>
+  </div>
   <div class="hints" id="cam">
     Loud
   </div>
