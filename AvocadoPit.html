@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AvocadoPit.com</title>
+  <style>
+  body{background-color:#aed75b; font-family:sans-serif;}
+  hr{border-color:black;}
+  #title{margin-left: 10%;}
+  #password{margin-left: 45%;}
+  #pass{margin-left: 46.6%;}
+  #cam{display:none;}
+  #q{display:none;}
+  #deb{display:none;}
+  #callin{display:none;}
+  #me{display:none;}
+  #a{display:none;}
+  #mase{display:none;}
+  #madi{display:none;}
+  #ron{display:none; margin-left: 30%;}
+  .inst{text-align:center;}
+  .hints{text-align:center; font-size:150%;}
+  </style>
+  <script>
+/***************
+Event Handlers
+***************/
+  var bks = {};
+  var hnum = 0;
+
+  bks.pass = function()
+  {
+    var passw = document.getElementById("password").value;
+    if (hnum == 0)
+    {
+      if ((passw != "Cameron")&&(passw != ""))
+      {
+        alert("Incorrect Password");
+       document.getElementById("password").value = "";
+      }
+     if (passw == "Cameron")
+     {
+       document.getElementById("password").value = "";
+       passw = "";
+      hnum = 1;
+      document.getElementById("cam").style.display = "none";
+      document.getElementById("c").innerHTML = "1/8";
+     }
+
+    }
+    if (hnum == 1)
+    {
+      if ((passw != "Meagan")&&(passw != ""))
+      {
+        alert("Incorrect Password");
+       document.getElementById("password").value = "";
+      }
+     if (passw == "Meagan")
+     {
+       passw = "";
+      hnum = 2;
+      document.getElementById("a").style.display = "none";
+      document.getElementById("password").value = "";
+      document.getElementById("c").innerHTML = "2/8";
+     }
+
+    }
+    if (hnum == 2)
+    {
+      if ((passw != "Quentin")&&(passw != ""))
+      {
+        alert("Incorrect Password");
+       document.getElementById("password").value = "";
+      }
+     if (passw == "Quentin")
+     {
+       passw = "";
+      hnum = 3;
+      document.getElementById("q").style.display = "none";
+      document.getElementById("password").value = "";
+      document.getElementById("c").innerHTML = "3/8";
+     }
+
+    }
+    if (hnum == 3)
+    {
+      if ((passw != "Brenton")&&(passw != ""))
+      {
+        alert("Incorrect Password");
+       document.getElementById("password").value = "";
+      }
+     if (passw == "Brenton")
+     {
+       passw = "";
+      hnum = 4;
+      document.getElementById("me").style.display = "none";
+      document.getElementById("password").value = "";
+      document.getElementById("c").innerHTML = "4/8";
+     }
+
+    }
+    if (hnum == 4)
+    {
+      if ((passw != "Mason")&&(passw != ""))
+      {
+        alert("Incorrect Password");
+       document.getElementById("password").value = "";
+      }
+     if (passw == "Mason")
+     {
+       passw = "";
+      hnum = 5;
+      document.getElementById("mase").style.display = "none";
+      document.getElementById("password").value = "";
+      document.getElementById("c").innerHTML = "5/8";
+     }
+
+    }
+    if (hnum == 5)
+    {
+      if ((passw != "Debora")&&(passw != ""))
+      {
+        alert("Incorrect Password");
+       document.getElementById("password").value = "";
+      }
+     if (passw == "Debora")
+     {
+       passw = "";
+      hnum = 6;
+      document.getElementById("deb").style.display = "none";
+      document.getElementById("password").value = "";
+      document.getElementById("c").innerHTML = "6/8";
+     }
+
+    }
+    if (hnum == 6)
+    {
+      if ((passw != "Madi")&&(passw != ""))
+      {
+        alert("Incorrect Password");
+       document.getElementById("password").value = "";
+      }
+     if (passw == "Madi")
+     {
+       passw = "";
+      hnum = 7;
+      document.getElementById("madi").style.display = "none";
+      document.getElementById("password").value = "";
+      document.getElementById("c").innerHTML = "7/8";
+     }
+
+    }
+    if (hnum == 7)
+    {
+      if ((passw != "Callin")&&(passw != ""))
+      {
+        alert("Incorrect Password");
+       document.getElementById("password").value = "";
+      }
+     if (passw == "Callin")
+     {
+       document.getElementById("inst").style.display = "none";
+       document.getElementById("c").style.display = "none";
+       document.getElementById("hint").style.display = "none";
+       document.getElementById("pass").style.display = "none";
+      document.getElementById("callin").style.display = "none";
+      document.getElementById("password").value = "";
+      document.getElementById("c").innerHTML = "8/8";
+     }
+
+    }
+
+  }
+  bks.hint = function()
+  {
+    if (hnum == 0)
+    {
+    document.getElementById("cam").style.display = "block"
+    }
+    if (hnum == 1)
+    {
+    document.getElementById("a").style.display = "block"
+    }
+    if (hnum == 2)
+    {
+    document.getElementById("q").style.display = "block"
+    }
+    if (hnum == 3)
+    {
+    document.getElementById("me").style.display = "block"
+    }
+    if (hnum == 4)
+    {
+    document.getElementById("mase").style.display = "block"
+    }
+    if (hnum == 5)
+    {
+    document.getElementById("deb").style.display = "block"
+    }
+    if (hnum == 6)
+    {
+    document.getElementById("madi").style.display = "block"
+    }
+    if (hnum == 7)
+    {
+    document.getElementById("callin").style.display = "block"
+    }
+
+  }
+/***************
+window.onload
+***************/
+window.onload = function()
+{
+  document.getElementById("pass").addEventListener('click', bks.pass);
+  document.getElementById("hint").addEventListener('click', bks.hint);
+}
+  </script>
+</head>
+  <body style:background-Color:burlywood; id="body">
+  <img src="Title.PNG" id="title" alt="image" width="80%" height="20%">
+  <hr><br><br><br>
+  <img src="ron.PNG" id="ron" alt="image" width="40%" height="400px">
+  <div id="inst" class="inst">
+    Please enter the correct series of passwords.
+  </div><br>
+  <div id="c"class="inst">
+    0/8
+  </div><br>
+  <input id="password" type="password" size="20" maxlength="30"><br><br>
+  <button type="button" id="pass">Enter</button>
+  <button type="button" id="hint">Hint</button><br><br>
+
+  <div class="hints" id="cam">
+    Loud
+  </div>
+  <div class="hints" id="q">
+    Is the melody
+  </div>
+  <div class="hints" id="deb">
+    Band-aid
+  </div>
+  <div class="hints" id="callin">
+    Whiny
+  </div>
+  <div class="hints" id="me">
+    Mr. Finger
+  </div>
+  <div class="hints" id="a">
+    Extra "a"
+  </div>
+  <div class="hints" id="mase">
+    Oh, yeeeeah...
+  </div>
+  <div class="hints" id="madi">
+    Ribs in disorder
+  </div>
+</body>
+</html>
