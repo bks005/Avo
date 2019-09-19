@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <title>Red Blob of Doom</title>
+  <style>
+  table{border-collapse:collapse;}
+
+  .slct{margin-left: 44.5%;}
+  #pselect{margin-top: 100px;}
+  #space{margin-top:122px;}
+  #title{margin-bottom: 180px;margin-top: 50px;}
+  #phpdsp{margin-top: 230px;}
+  #lnk{display:inline-block;}
+  #red{margin-top: 100px;}
+  #appear{margin-top: 100px;}
+  #win{margin-top: 100px; margin-bottom: 217px}
+  #lose{margin-top: 100px; margin-bottom: 217px}
+  #myAnimation {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  background-color: red;
+}
+#myContainer {
+  width: 400px;
+  height: 120px;
+  position: relative;
+  background: black;
+}
+.mid{margin-left:45.8%;}
+  </style>
+  <link rel="stylesheet" href="FinalProject.css">
+  <script src="utl3.js"></script>
+  <script>
+    /***************
+    Event Handlers
+    ***************/
+    var bks = {};
+    var select = new Audio("Ruined Planet.ogg");
+    var fight = new Audio("Great Little Challenge.ogg");
+    var lose = new Audio("Resilience.ogg");
+    var win = new Audio("The True Story of Beelzebub.ogg");
+    var tap = new Audio("tap.wav");
+    var char,
+        hp,
+        dmg,
+        def,
+        knight,
+        heavy,
+        mage,
+        ehp,
+        phit = new Audio("phit.wav"),
+        swipe = new Audio("swipe.wav"),
+        ehit = new Audio("ehit.wav");
+
+        bks.move = function() {
+          var elem = document.getElementById("myAnimation");
+          var pos = 0;
+          var id = setInterval(frame, 46);
+          function frame() {
+            if (pos == 338) {
+              clearInterval(id);
+            } else {
+              pos++;
+              elem.style.top = pos + 'px';
+              elem.style.left = pos - 'px';
+            }
+          }
+        }
+
+
+    bks.init = function()
+    {
+
+      select.loop = true;
+    	select.load();
+      fight.loop = true;
+    	fight.load();
+      lose.loop = true;
+    	lose.load();
+      win.loop = true;
+    	win.load();
+      utl.eid("myContainer").style.display = "none"
+      utl.eid("myAnimation").style.display = "none"
+      utl.eid("lose").style.display = "none"
+      utl.eid("lnk").style.display = "none"
+      utl.eid("win").style.display = "none"
+      utl.eid("phpdsp").style.display = "none"
+      utl.eid("ehpdsp").style.display = "none"
+      utl.eid("enemy").style.display = "none"
+      utl.eid("select").style.display = "none"
+      char = "";
+      utl.eid("begin").style.display = "block"
+
+    }
+    bks.start = function()
+    {
+      tap.play();
+      utl.eid("start").style.display = "none"
+      utl.eid("select").style.display = "block"
+      select.play();
+
+    }
+    bks.kI = function()
+    {
+      tap.play();
+      utl.eid("space").style.display = "none";
+      char = "knight";
+      utl.eid("selection").innerHTML = "<b>Knight:</b> Has medium health and damage. <br>\n<br> <b>HP:</b> 70 <br>\n <b>DMG:</b> 60 <br>\n <b>DEF:</b> 10";
+      console.log(char);
+    }
+    bks.hI = function()
+    {
+      tap.play();
+      utl.eid("space").style.display = "none";
+      char = "heavy";
+      utl.eid("selection").innerHTML = "<b>Paladin:</b> Has high health and damage, but is slow.<br>\n<br> <b>HP:</b> 100 <br>\n <b>DMG:</b> 80 <br>\n <b>DEF:</b> 20";
+      console.log(char);
+    }
+    bks.mI = function()
+    {
+      tap.play();
+      utl.eid("space").style.display = "none";
+      char = "mage";
+      utl.eid("selection").innerHTML = "<b>Mage:</b> Has low health and high damage, and is able to use spells.<br>\n<br> <b>HP:</b> 50 <br>\n <b>DMG:</b> 100 <br>\n <b>DEF:</b> 0";
+      console.log(char);
+    }
+
+    bks.begin = function()
+    {
+
+      if (char == "")
+      {
+        alert("You must select a class before continuing.")
+        return;
+      }
+      utl.eid("myAnimation").style.pointerEvents = "none";
+      setTimeout(bks.hitEnable, 15600);
+      utl.eid("myContainer").style.display = "block"
+      utl.eid("myAnimation").style.display = "block"
+      bks.move();
+      select.pause();
+      fight.play();
+      console.log("Enemy's HP: " + ehp)
+
+
+      if (char == "knight")
+      {
+        hp = 70;
+        dmg = 60;
+        def = 10;
+        console.log(hp);
+      }
+      if (char == "heavy")
+      {
+        hp = 100;
+        dmg = 80;
+        def = 20;
+      }
+      if (char == "mage")
+      {
+        hp = 50;
+        dmg = 100;
+        def = 0;
+      }
+      utl.eid("select").style.display = "none";
+      ehp = 300;
+      utl.eid("ehealth").innerHTML = hp;
+      utl.eid("phealth").innerHTML = ehp;
+      document.body.style.backgroundColor = "black";
+
+    }
+    bks.hitEnable = function()
+    {
+      utl.eid("myContainer").style.backgroundColor = "#8fbcbc";
+      document.body.style.backgroundColor = "#8fbcbc";
+      utl.eid("enemy").style.display = "block";
+      utl.eid("phpdsp").style.display = "block"
+      utl.eid("ehpdsp").style.display = "block"
+      utl.eid("myAnimation").style.pointerEvents = "auto";
+    }
+    bks.attack = function()
+    {
+
+        utl.eid("myAnimation").style.pointerEvents = "none";
+        swipe.play();
+        setTimeout(bks.ehit, 400);
+        setTimeout(bks.phit, 1500);
+    }
+    bks.ehit = function()
+    {
+
+      ehit.play();
+      ehp -= dmg;
+      utl.eid("phealth").innerHTML = ehp;
+      console.log("Enemy's HP: " + ehp);
+      if (ehp <= 0)
+      {
+        fight.pause();
+        win.play();
+        utl.eid("myContainer").style.display = "none";
+        utl.eid("myAnimation").style.display = "none";
+        utl.eid("appear").style.display = "none";
+        utl.eid("win").style.display = "block"
+        utl.eid("lnk").style.display = "inline";
+      }
+    }
+    bks.phit = function()
+    {
+      if (utl.eid("myAnimation").style.display == "none")
+      {
+        return;
+      }
+      hp -= (20 - (20 * (def * .01)));
+      console.log((def * .01)*20);
+      console.log("Your HP: " + hp);
+      utl.eid("ehealth").innerHTML = hp;
+      utl.eid("myAnimation").style.pointerEvents = "auto";
+      phit.play();
+      if (hp <= 0)
+      {
+        fight.pause();
+        lose.play();
+        utl.eid("myContainer").style.display = "none";
+        utl.eid("myAnimation").style.display = "none"
+        utl.eid("appear").style.display = "none";
+        utl.eid("lose").style.display = "block";
+        utl.eid("lnk").style.display = "inline";
+      }
+
+
+      if (char == "heavy")
+      {
+        utl.eid("myAnimation").style.pointerEvents = "none";
+        setTimeout(bks.phit2, 1500);
+      }
+    }
+    bks.phit2 = function()
+    {
+      if (utl.eid("myAnimation").style.display == "none")
+      {
+        return;
+      }
+      hp -= (20 - (20 * (def * .01)));
+      console.log((def * .01)*20);
+      console.log("Your HP: " + hp);
+      if (hp <= 0)
+      {
+        fight.pause();
+        lose.play();
+        utl.eid("myContainer").style.display = "none";
+        utl.eid("myAnimation").style.display = "none";
+        utl.eid("appear").style.display = "none";
+        utl.eid("lose").style.display = "block";
+        utl.eid("lnk").style.display = "inline";
+      }
+
+
+      utl.eid("ehealth").innerHTML = hp;
+      utl.eid("myAnimation").style.pointerEvents = "auto";
+      phit.play();
+    }
+    /***************
+    window.onload
+    ***************/
+    window.onload = function()
+    {
+      
+      utl.eid("myAnimation").addEventListener('click', bks.attack)
+      utl.eid("kI").addEventListener('click', bks.kI)
+      utl.eid("hI").addEventListener('click', bks.hI)
+      utl.eid("mI").addEventListener('click', bks.mI)
+      utl.eid("begin").addEventListener('click', bks.begin)
+      utl.eid("startbut").addEventListener('click', bks.start)
+      bks.init();
+    }
+    </script>
+   </head>
+   <body>
+
+
+     <div id ="myContainer" class="mid">
+     <div id ="myAnimation"></div>
+     </div>
+
+
+
+     <div id="start">
+     <h1 class="cent sans" id="title">Red Blob of Doom</h1>
+     <p class="cent">The Red Blob of Doom has come to destroy the Kingdom.<br>As the hero, it's your job to vanquish the Red Blob of Doom.</p>
+     <button type="button" id="startbut" class="eg">Start</button>
+     </div>
+     <div id="select">
+       <h3 class="cent sans" id="pselect">Select your class</h3>
+     <table class="slct">
+       <td>
+         <img id="kI" src="knightI.jpg" alt="knight" width="50px">
+       </td>
+       <td>
+         <img id="hI" src="heavyI.png" alt="heavy" width="50px">
+       </td>
+       <td>
+         <img id="mI" src="mageI.png" alt="mage" width="50px">
+       </td>
+     </table>
+
+        <p id="selection" class="cent"></p>
+        <p id="space"></p>
+        <button type="button" id="begin" class="eg">Begin</button>
+      </div>
+      <div id="enemy" >
+        <p id="appear"class="cent">An enemy has appeared. Click to attack!</p>
+
+      </div>
+      <h1 id="win" class="cent sans">You Won!</h1>
+      <h1 id="lose" class="cent sans">You Died.</h1>
+      <p id="phpdsp" class="cent">Enemy's HP: <span id="phealth"></span></p>
+      <p id="ehpdsp" class="cent">Your HP: <span id="ehealth"></span></p>
+      <div class="cent"  id="lnkd" >
+      <a class="cent" id="lnk" href="11FinalProject.html" target="_self">Return Home</a>
+    </div>
+   </body>
+  </html

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <title>Where's Baldo</title>
+  <style>
+  .sans{margin-top: 150px;}
+  #button{display:inline;}
+  #button2{display:inline;}
+  </style>
+  <link rel="stylesheet" href="FinalProject.css">
+  <script  src="utl3.js"></script>
+  <script>
+    /***************
+    Event Handlers
+    ***************/
+    var bks = {};
+    var music = new Audio("Su Turno.ogg");
+    bks.init = function()
+    {
+      utl.eid("pic").style.display = "none";
+      music.loop = true;
+    	music.load();
+    }
+
+    bks.play = function()
+    {
+      utl.eid("begin").style.display = "none";
+      utl.eid("pic").style.display = "block";
+      music.play();
+
+    }
+    /***************
+    window.onload
+    ***************/
+    window.onload = function()
+    {
+      bks.init();
+      utl.eid("button").addEventListener('click', bks.play);
+      utl.eid("button").addEventListener('click', bks.play);
+    }
+    </script>
+   </head>
+   <body>
+     <div id="begin">
+     <h1 class="sans cent">You found Baldo!</h1><br><br><br><br>
+     <p class="cent">If you thought that was hard, then you definitely won't<br>
+       find Baldo this time. Are you sure you you want to try? <br><br><br><br>
+     <button type="button" id="button" class="eg">Yes</button>
+     <a href="11FinalProject.html" target="_self"><button type="button" id="button2" class="eg">No</button></a>
+   </div>
+     <img id="pic" class="eg"  src="BaldoMountainsg2.jpg" alt="Baldo Station" width="1350px" usemap="#MountMap">
+     <map name="MountMap">
+       <area shape="rect" coords="91, 77, 99, 72"  alt="Baldo" href="11FinalProject.3.4.html" >
+       <area shape="poly" coords="1194, 643, 1235, 635, 1285, 641, 1317, 663, 1324, 682, 1317, 705, 1277, 728, 1246, 732, 1195, 723, 1165, 698, 1161, 683, 1168, 661"  alt="Baldo" href="11FinalProject.html" >
+       <area shape="default">
+     </map>
+   </body>
+  </html>

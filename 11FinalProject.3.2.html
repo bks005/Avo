@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <title>Where's Baldo</title>
+  <style>
+  .sans{margin-top: 150px;}
+  </style>
+  <link rel="stylesheet" href="FinalProject.css">
+  <script  src="utl3.js"></script>
+  <script>
+    /***************
+    Event Handlers
+    ***************/
+    var bks = {};
+    var music = new Audio("Su Turno.ogg");
+    bks.init = function()
+    {
+      utl.eid("pic").style.display = "none";
+      music.loop = true;
+    	music.load();
+    }
+
+    bks.play = function()
+    {
+      utl.eid("begin").style.display = "none";
+      utl.eid("pic").style.display = "block";
+      music.play();
+
+    }
+    /***************
+    window.onload
+    ***************/
+    window.onload = function()
+    {
+      bks.init();
+      utl.eid("button").addEventListener('click', bks.play);
+    }
+    </script>
+   </head>
+   <body>
+     <div id="begin">
+     <h1 class="sans cent">Welcome to Where's Baldo!</h1><br><br><br><br>
+     <p class="cent">The objective is to find Baldo in all three levels.
+        Clicking on Baldo<br> will take you to the next level.
+       If you ever feel like giving up,<br> press the big, red "Give Up?" button to return to home menu.<br><br><br><br>
+     <button type="button" id="button" class="eg">Start</button>
+   </div>
+     <img id="pic" class="eg"  src="BaldoCrowd.jpg" alt="Baldo Crowd" width="1350px" usemap="#CrowdMap">
+     <map name="CrowdMap">
+       <area shape="poly" coords="1164, 665, 1198, 639, 1199, 618, 1173, 618, 1173, 646, 1164, 652"  alt="Baldo" href="11FinalProject.3.html" >
+       <area shape="poly" coords="1194, 643, 1235, 635, 1285, 641, 1317, 663, 1324, 682, 1317, 705, 1277, 728, 1246, 732, 1195, 723, 1165, 698, 1161, 683, 1168, 661"  alt="Baldo" href="11FinalProject.html" >
+       <area shape="default">
+     </map>
+   </body>
+  </html>

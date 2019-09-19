@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <title>CSCI Test</title>
+  <style>
+  #lnk{display:block;}
+  #CSCI{margin-bottom: 50px;}
+  #start{margin-top:100px; margin-bottom: 80px;}
+  .score{font-size: 140%; margin-top: 250px;}
+  </style>
+  <link rel="stylesheet" href="FinalProject.css">
+  <script  src="utl3.js"></script>
+  <script>
+    /***************
+    Event Handlers
+    ***************/
+    var bks = {};
+    var dre = new Audio("Dreaming.ogg");
+    var gre = new Audio("Great Little Challenge.ogg");
+    var res = new Audio("Resilience.ogg");
+    var rui = new Audio("Ruined Planet.ogg");
+    var su = new Audio("Su Turno.ogg");
+    var bee = new Audio("The True Story of Beelzebub.ogg");
+    var mal = new Audio("Mall.ogg");
+
+    bks.pattern1 = [false, true, true, true]
+
+    bks.init = function()
+    {
+      dre.loop = "true";
+      dre.load();
+      gre.loop = "true";
+      gre.load();
+      res.loop = "true";
+      res.load();
+      rui.loop = "true";
+      rui.load();
+      su.loop = "true";
+      su.load();
+      bee.loop = "true";
+      bee.load();
+      mal.loop = "true";
+      mal.load();
+      utl.eid("test").style.display = "none";
+      utl.eid("score").style.display = "none";
+      utl.eid("musicd").style.display = "none";
+    }
+    bks.start = function()
+    {
+      utl.eid("test").style.display = "block";
+      utl.eid("musicd").style.display = "block";
+      utl.eid("title").style.display = "none";
+      dre.play();
+    }
+    bks.music = function()
+    {
+
+      selection = utl.eid("music").value;
+      if (selection == "d")
+      {
+        dre.play();
+        gre.pause();
+        res.pause();
+        rui.pause();
+        su.pause();
+        bee.pause();
+        mal.pause();
+      }
+      if (selection == "g")
+      {
+        gre.play();
+        dre.pause();
+        res.pause();
+        rui.pause();
+        su.pause();
+        bee.pause();
+        mal.pause();
+      }
+      if (selection == "re")
+      {
+        res.play();
+        dre.pause();
+        gre.pause();
+        rui.pause();
+        su.pause();
+        bee.pause();
+        mal.pause();
+      }
+      if (selection == "ru")
+      {
+        rui.play();
+        dre.pause();
+        gre.pause();
+        res.pause();
+        su.pause();
+        bee.pause();
+        mal.pause();
+      }
+      if (selection == "s")
+      {
+        su.play();
+        dre.pause();
+        gre.pause();
+        res.pause();
+        rui.pause();
+        bee.pause();
+        mal.pause();
+      }
+      if (selection == "t")
+      {
+        bee.play();
+        dre.pause();
+        gre.pause();
+        res.pause();
+        rui.pause();
+        su.pause();
+        mal.pause();
+      }
+      if (selection == "m")
+      {
+        mal.play();
+        dre.pause();
+        gre.pause();
+        res.pause();
+        rui.pause();
+        su.pause();
+        bee.pause();
+      }
+    }
+    bks.submit = function()
+    {
+      var numStr;
+       numStr = prompt("Are you sure you want to submit? You won't be able to change any answers after you confirm. Type CONFIRM if you wish to continue.");
+      if (numStr == "CONFIRM")
+      {
+        bks.submit2();
+      }
+    }
+    bks.submit2 = function()
+    {
+
+      var curscore = 0;
+      var i1,
+          i2,
+          i3,
+          i4;
+      var data1 = document.getElementsByName("ques1");
+      var data2 = document.getElementsByName("ques2");
+      var data3 = document.getElementsByName("ques3");
+      var data4 = document.getElementsByName("ques4");
+
+      for (i1 = 0; i1 < data1.length; i1++)
+         {
+          if (data1[i1].checked)
+           {
+            if (data1[i1].value == "true")
+  					{
+  						curscore ++;
+  					}
+            break;
+           }
+       }
+
+
+    for (i2 = 0; i2 < data2.length; i2++)
+       {
+        if (data2[i2].checked)
+         {
+          if (data2[i2].value == "true")
+          {
+            curscore ++;
+          }
+          break;
+         }
+     }
+
+
+     for (i3 = 0; i3 < data3.length; i3++)
+        {
+         if (data3[i3].checked == bks.pattern1[i3])
+          {
+             curscore ++;
+          }
+
+        }
+
+        for (i4 = 0; i4 < data4.length; i4++)
+           {
+            if (data4[i4].checked)
+             {
+              if (data4[i4].value == "true")
+              {
+                curscore ++;
+              }
+              break;
+             }
+         }
+        utl.eid("score").innerHTML = "You got a score of: " + curscore +"/7";
+   console.log(curscore);
+   utl.eid("test").style.display = "none";
+   utl.eid("musicd").style.display = "none";
+   utl.eid("score").style.display = "block";
+}
+
+    /***************
+    window.onload
+    ***************/
+    window.onload = function()
+    {
+      bks.init();
+      utl.eid("music").addEventListener('change', bks.music)
+      utl.eid("start").addEventListener('click', bks.start)
+      utl.eid("submit").addEventListener('click', bks.submit)
+    }
+    </script>
+   </head>
+   <body>
+     <div id="title">
+     <h1 class="cent sans" id="CSCI">CSCI Test</h1>
+     <p class="cent">You will be tested on your knowledge of HTML, CSS, and JavaScript.</p>
+     <button type="button" id="start" class="eg">Start</button>
+   </div>
+     <div id="test">
+     <p class="cent">When you are finished, click the submit button to recieve your score.
+        To change the music <a href="11FinalProject.2.html#music">click here</a></p><br>
+
+        <hr><br>
+     <ol>
+       <li>An id may refer to multiple elements, only if they are within the div that has the id.<br><br>
+         <input id="rb1" type="radio" name="ques1" value="true"> <label for="rb1"> True</label><br>
+     	   <input id="rb2" type="radio" name="ques1" value="false"><label for="rb2"> False</label><br><br>
+       </li>
+       <hr><br>
+       <li>Given the following CSS, ".text{font-style: sans-serif;}" all elements that use the text class will have sans-serif font.<br><br>
+         <input id="rb3" type="radio" name="ques2" value="false"> <label for="rb3"> True</label><br>
+     	   <input id="rb4" type="radio" name="ques2" value="true"><label for="rb4"> False</label><br><br>
+       </li>
+       <hr><br>
+       <li>Which tags are NOT fake.<br><br>
+         <input id="rb5" type="checkbox" name="ques3" value="false"> <label for="rb5"> &ltfr&gt</label><br>
+     	   <input id="rb6" type="checkbox" name="ques3" value="true"><label for="rb6"> &ltstrong&gt</label><br>
+         <input id="rb7" type="checkbox" name="ques3" value="true"> <label for="rb7"> &ltul&gt</label><br>
+     	   <input id="rb8" type="checkbox" name="ques3" value="true"><label for="rb8"> &ltb&gt</label><br><br>
+       </li>
+       <hr><br>
+       <li>Given C=B%A What is the value of C when A=2 B=5. <br><br>
+         <input id="rb9" type="radio" name="ques4" value="false"> <label for="rb9"> 10</label><br>
+     	   <input id="rb10" type="radio" name="ques4" value="false"><label for="rb10"> 3</label><br>
+         <input id="rb11" type="radio" name="ques4" value="true"> <label for="rb11"> 1</label><br>
+     	   <input id="rb12" type="radio" name="ques4" value="false"><label for="rb12"> 7</label><br><br>
+       </li>
+       <hr><br>
+       <li>What does an if statement do?<br><br>
+         <input id="rb14" type="radio" name="ques5" value="false"> <label for="rb13"> Runs its specified code when the statement inside the if statement is false.</label><br>
+     	   <input id="rb15" type="radio" name="ques6" value="true"><label for="rb14"> Runs its specified code when the statement inside the if statement is true.</label><br>
+         <input id="rb16" type="radio" name="ques7" value="false"> <label for="rb15"> Loops its specified code while the statement inside the if statement is false.</label><br>
+     	   <input id="rb17" type="radio" name="ques8" value="false"><label for="rb16"> Loops its specified code while the statement inside the if statement is True.</label><br><br>
+       </li>
+       <hr><br>
+
+       <button type="submit" id="submit">Submit</button>
+       </div>
+       <div id="musicd">
+       <p>Select your music:</p>
+       <select id="music">
+         <option value="d">Dreaming</option>
+         <option value="g">Great Little Challenge</option>
+         <option value="re">Resilience</option>
+         <option value="ru">Ruined Planet</option>
+         <option value="s">Su Turno</option>
+         <option value="t">The True Story of Beelzebub</option>
+         <option value="m">Mall</option>
+       </select>
+     </div>
+       <p id="score" class="score cent sans"></p>
+       <a class="cent" id="lnk" href="11FinalProject.html" target="_self">Return Home</a>
+   </body>
+  </html>

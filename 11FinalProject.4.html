@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <title>???</title>
+  <style>
+  td{background-color:red; width: 50px; height: 50px;}
+  table{border-collapse: collapse;}
+  .tab{margin-left:20%; margin-top:25px;}
+  .s{margin-top: 100px;}
+  .padbor
+  {
+    display:inline-block;
+    margin:25px;
+    padding: 25px;
+    border:solid;
+    border-width:3px;
+    border-top-color: red;
+    border-right-color: orange;
+    border-bottom-color: yellow;
+    border-left-color: green;
+  }
+  .bor
+  {
+    color:#7300e6;
+    border:3px solid #24478f;
+  }
+  .ig{ display:inline;}
+  #key{cursor: pointer;}
+  #in{margin-top:150px;}
+  #lnk{display:block;}
+  </style>
+  <link rel="stylesheet" href="FinalProject.css">
+  <script  src="utl3.js"></script>
+  <script>
+    /***************
+    Event Handlers
+    ***************/
+    var bks = {};
+    var color = 0;
+    bks.init = function()
+    {
+      utl.eid("tab").style.display = "none";
+      utl.eid("img").style.display = "none";
+    }
+
+    bks.color = function(ev)
+    {
+      if (ev.target.nodeName.toLowerCase() != "td")
+      {
+        return;
+      }
+      ev.target.style.backgroundColor = "#8fbcbc";
+      if (ev.target.id == "key")
+      {
+        ev.target.innerHTML = "Click Me"
+      }
+    }
+    bks.color2 = function(ev)
+    {
+      if (ev.target.nodeName.toLowerCase() != "td")
+      {
+        return;
+      }
+      ev.target.style.backgroundColor = "#cc0000";
+      if (ev.target.id == "key")
+      {
+        ev.target.innerHTML = ""
+      }
+}
+
+bks.focusin = function(ev)
+{
+if (ev.target.nodeName.toLowerCase() === "input")
+ ev.target.style.backgroundColor = "#ccffff";
+}
+
+
+
+bks.blurin = function(ev)
+{
+if (ev.target.nodeName.toLowerCase() === "input")
+ ev.target.style.backgroundColor = "white";
+}
+bks.kp = function(ev)
+{
+
+  if (ev.key === "Enter")
+  {
+    color++
+
+    if (color % 7 == 0)
+    {
+      utl.eid("n").style.color = "#24478f"
+      document.body.style.backgroundColor = "#7300e6";
+    }
+    if (color % 7 == 1)
+    {
+      utl.eid("n").style.color = "#7300e6"
+      document.body.style.backgroundColor = "red";
+    }
+    if (color % 7 == 2)
+    {
+      utl.eid("n").style.color = "red"
+      document.body.style.backgroundColor = "orange";
+    }
+    if (color % 7 == 3)
+    {
+      utl.eid("n").style.color = "orange"
+      document.body.style.backgroundColor = "yellow";
+    }
+    if (color % 7 == 4)
+    {
+      utl.eid("n").style.color = "yellow"
+      document.body.style.backgroundColor = "green";
+    }
+    if (color % 7 == 5)
+    {
+      utl.eid("n").style.color = "green"
+      document.body.style.backgroundColor = "blue";
+    }
+    if (color % 7 == 6)
+    {
+      utl.eid("n").style.color = "blue"
+      document.body.style.backgroundColor = "#24478f";
+    }
+  }
+  console.log(color);
+}
+bks.go = function()
+{
+  var num;
+
+  num = utl.eid("in").value;
+
+  if ((num == 1) ||(num == 2))
+  {
+    if (num == 1 )
+    {
+      utl.eid("start").style.display = "none";
+      utl.eid("tab").style.display = "block";
+    }
+    if (num == 2 )
+    {
+      utl.eid("start").style.display = "none";
+      utl.eid("img").style.display = "block";
+    }
+
+  }
+  else
+  {
+    alert("It must be either a 1 or a 2.")
+    utl.eid("in").value = "";
+  }
+}
+bks.home = function()
+{
+  utl.eid("img").style.display = "none";
+  utl.eid("tab").style.display = "none";
+  utl.eid("start").style.display = "block";
+}
+    /***************
+    window.onload
+    ***************/
+    window.onload = function()
+    {
+      document.body.addEventListener('keypress', bks.kp);
+      utl.eid("in").addEventListener('focus', bks.focusin, true);
+      utl.eid("in").addEventListener('blur', bks.blurin, true);
+      utl.eid("key").addEventListener('click', bks.home);
+      utl.eid("go").addEventListener('click', bks.go);
+      utl.eid("i").addEventListener('click', bks.home);
+      utl.eid("tab").addEventListener('mouseover', bks.color);
+      utl.eid("tab").addEventListener('mouseout', bks.color2);
+      bks.init();
+    }
+    </script>
+   </head>
+   <body>
+   <div id="start" >
+     <p class="cent s">Enter in either a 1 or a 2.</p>
+     <input class="eg"type="text" id="in" size="2" maxlength="1"><br><br><br>
+     <button class="eg"type="button" id="go">Go</button><br><br><br>
+     <a class="cent" id="lnk" href="11FinalProject.html" target="_self">Return Home</a>
+   </div>
+     <table id="tab" class="tab">
+       <tr>
+         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+       </tr>
+       <tr>
+         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+       </tr>
+       <tr>
+         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+       </tr>
+       <tr>
+         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+       </tr>
+       <tr>
+         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+       </tr>
+       <tr>
+         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+       </tr>
+       <tr>
+         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+       </tr>
+       <tr>
+         <td></td><td id="key" class="cent"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+       </tr>
+       <tr>
+         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+       </tr>
+       <tr>
+         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+       </tr>
+       <tr>
+         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+       </tr>
+       <tr>
+         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+       </tr>
+       <tr>
+         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+       </tr>
+       <tr>
+         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+       </tr>
+     </table>
+ <div id="img">
+
+     <figure class="padbor">
+       <img id="i" class="ig" src="question.png" alt="?">
+       <figcaption id="n"class="bor">Press enter?</figcaption>
+     </figure>
+
+
+ </div>
+   </body>
+  </html>
