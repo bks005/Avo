@@ -1,0 +1,11 @@
+body{
+  background-color:#8fbcbc;
+}
+a:link{color:#0066ff; text-decoration:none;}
+a:visited{color:#0066ff; text-decoration:none;}
+a:hover{color:#1a75ff; text-decoration:none; font-weight:bold;}
+a:focus{color:#0066ff; text-decoration:none;}
+a:active{color:#0047b3; text-decoration:none; text-align:right;}
+.cent{text-align: center;}
+.eg{margin-left:auto; margin-right:auto; display:block;}
+.sans{font-family: sans-serif;}
