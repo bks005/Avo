@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>FunWithNegatives.com</title>
+  <style>
+  body{background-color:#aed75b; font-family:sans-serif;}
+  .prob
+  {
+    margin-top: 15%;
+    margin-left: 45%;
+    font-size: 200%;
+  }
+  </style>
+  <script>
+/***************
+Event Handlers
+***************/
+  var bks = {};
+  var fst = 0;
+  var snd = 0;
+  var rnp = 0;
+  var ans;
+  bks.gen = function()
+  {
+    if (-5 > 0)
+    {
+      console.log("wow");
+    }
+    console.log("generate");
+    var min = 1;
+    var max = 20;
+    fst = Math.floor(Math.random() * (max + 1) + min);
+    snd = Math.floor(Math.random() * (max + 1) + min);
+    rnp = Math.random();
+    //console.log(rnp);
+    if (rnp < .5)
+    {
+      //console.log(fst);
+      fst = fst * (-1);
+      //console.log(fst);
+    }
+    rnp = Math.random();
+    //console.log(rnp);
+    if (rnp < .5)
+    {
+      snd = snd * (-1);
+    }
+    ans = fst + snd;
+    console.log(ans);
+    if ((fst > 0) && (snd > 0))
+    {
+      if (ans < 20)
+      {
+      console.log("did");
+      fst += 10;
+      snd += 10;
+      ans = fst + snd;
+    }
+    }
+    document.getElementById("first").innerHTML = fst;
+    document.getElementById("second").innerHTML = snd;
+    if (snd < 0)
+    {
+      document.getElementById("fp").innerHTML = "(";
+      document.getElementById("sp").innerHTML = ")";
+    }
+    else
+    {
+      document.getElementById("fp").innerHTML = "";
+      document.getElementById("sp").innerHTML = "";
+    }
+
+
+  }
+  bks.check = function()
+  {
+    if (document.getElementById("ans").value == ans)
+    {
+     alert("Correct!");
+     document.getElementById("ans").value = "";
+     bks.gen();
+    }
+    else
+    {
+    alert("That is incorrect.");
+    document.getElementById("ans").value = "";
+    }
+  }
+/***************
+window.onload
+***************/
+window.onload = function()
+{
+  document.getElementById("first").innerHTML = "0";
+  document.getElementById("second").innerHTML = "0";
+  document.getElementById("gen").addEventListener('click', bks.gen);
+  document.getElementById("check").addEventListener('click', bks.check);
+}
+  </script>
+</head>
+<body>
+    <div class="prob">
+      <span id="first"></span>+<span id="fp"></span><span id="second"></span><span id="sp"></span>=
+      <input id="ans" type="text" size="5" maxlength="5"><br>
+      <button type="button" id="gen">New Problem</button><button type="button" id="check">Enter</button>
+    </div>
+</body>
+</html>
